@@ -1,0 +1,6 @@
+my temp_00000 0 2 O O
+name temp_00000 3 7 O O
+is temp_00000 8 10 O O
+Ngoc temp_00000 11 15 O O
+Linh temp_00000 16 20 O O
+

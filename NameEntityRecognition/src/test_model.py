@@ -25,7 +25,7 @@ import configparser
 from pprint import pprint
 
 parameters = {'pretrained_model_folder':'../model',
-                      'dataset_text_folder':'../data/en',
+                      'dataset_text_folder':'../../../ML_EntityData/data/en',
                       'character_embedding_dimension':25,
                       'character_lstm_hidden_state_dimension':25,
                       'check_for_digits_replaced_with_zeros':True,
@@ -39,11 +39,11 @@ parameters = {'pretrained_model_folder':'../model',
                       'load_only_pretrained_token_embeddings':False,
                       'load_all_pretrained_token_embeddings':False,
                       'main_evaluation_mode':'conll',
-                      'maximum_number_of_epochs':4,
+                      'maximum_number_of_epochs':3,
                       'number_of_cpu_threads':8,
                       'number_of_gpus':0,
                       'optimizer':'sgd',
-                      'output_folder':'../output',
+                      'output_folder':'../../../ML_EntityData/output',
                       'patience':10,
                       'plot_format':'pdf',
                       'reload_character_embeddings':True,
@@ -57,7 +57,7 @@ parameters = {'pretrained_model_folder':'../model',
                       'tagging_format':'bioes',
                       'token_embedding_dimension':100,
                       'token_lstm_hidden_state_dimension':100,
-                      'token_pretrained_embedding_filepath':'../embedding/glove.6B.100d.txt',
+                      'token_pretrained_embedding_filepath':'../../../ML_EntityData/embedding/glove.6B.100d.txt',
                       'tokenizer':'spacy',
                       'train_model':True,
                       'use_character_lstm':True,
@@ -106,8 +106,7 @@ model.load_pretrained_token_embeddings(sess, dataset,embedding_filepath=paramete
                                                        check_lowercase= parameters['check_for_lowercase'],check_digits=parameters['check_for_digits_replaced_with_zeros'],
                                                        token_to_vector=token_to_vector)
 # Initial params_train
-transition_params_trained = np.random.rand(len(dataset.unique_labels) + 2,
-                                                                len(dataset.unique_labels) + 2)
+transition_params_trained = np.random.rand(len(dataset.unique_labels) + 2,len(dataset.unique_labels) + 2)
 # Restore model trained
 # transition_params_trained = model.restore_from_pretrained_model(dataset, sess , model_pathfile=os.path.join(parameters['pretrained_model_folder'],'model.ckpt'),
 #                                                                                      dataset_pathfile=(parameters['pretrained_model_folder']+'/dataset.pickle'),
@@ -186,6 +185,7 @@ previous_best_valid_f1_score = 0
 epoch_number = -1
 try:
     while True:
+
         step = 0
         epoch_number += 1
         print('\nStarting epoch {0}'.format(epoch_number))
@@ -205,11 +205,11 @@ try:
         epoch_elapsed_training_time = time.time() - epoch_start_time
         print('Training completed in {0:.2f} seconds'.format(epoch_elapsed_training_time), flush=True)
 
-        # y_pred, y_true, output_filepaths = train.predict_labels(sess=sess,model= model,transition_params_trained= transition_params_trained,
-        #                                                                 dataset=dataset,epoch_number= epoch_number,
-        #                                                                stats_graph_folder= stats_graph_folder,dataset_filepaths= dataset_filepaths,
-        #                                                                tagging_format= parameters['tagging_format'], main_evaluation_mode=parameters['main_evaluation_mode'])
-        #
+        y_pred, y_true, output_filepaths = train.predict_labels_lite(sess=sess,model= model,transition_params_trained= transition_params_trained,
+                                                                         dataset=dataset,epoch_number= epoch_number,
+                                                                        stats_graph_folder= stats_graph_folder,dataset_filepaths= dataset_filepaths,
+                                                                        tagging_format= parameters['tagging_format'], main_evaluation_mode=parameters['main_evaluation_mode'],use_crf=parameters['use_crf'])
+
         # # Evaluate model: save and plot results
         # evaluate.evaluate_model(results, dataset, y_pred, y_true, stats_graph_folder, epoch_number,
         #                                 epoch_start_time, output_filepaths, parameters)
@@ -219,7 +219,7 @@ try:
         #     break
         #
         # # Save model
-        # model.saver.save(sess, os.path.join(model_folder, 'model_{0:05d}.ckpt'.format(epoch_number)))
+        model.saver.save(sess, os.path.join(model_folder, 'model_{0:05d}.ckpt'.format(epoch_number)))
         #
         # # Save TensorBoard logs
         # summary = sess.run(model.summary_op, feed_dict=None)
