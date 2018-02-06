@@ -1,6 +1,45 @@
-my temp_00000 0 2 O
-name temp_00000 3 7 O
-is temp_00000 8 10 O
-Ngoc temp_00000 11 15 O
-Linh temp_00000 16 20 O
+Đó temp_00000 0 2 O
+là temp_00000 3 5 O
+con temp_00000 6 9 O
+đường temp_00000 10 15 O
+biển temp_00000 16 20 O
+ngắn temp_00000 21 25 O
+nhất temp_00000 26 30 O
+để temp_00000 31 33 O
+đi temp_00000 34 36 O
+từ temp_00000 37 39 O
+Ấn_Độ_Dương temp_00000 40 51 O
+sang temp_00000 52 56 O
+Thái_Bình_Dương temp_00000 57 72 O
+, temp_00000 73 74 O
+chiếm temp_00000 75 80 O
+đến temp_00000 81 84 O
+lượng temp_00000 85 90 O
+hàng_hoá temp_00000 91 99 O
+lưu_thông temp_00000 100 109 O
+
+đường_biển temp_00000 110 120 O
+của temp_00000 121 124 O
+thế_giới temp_00000 125 133 O
+, temp_00000 134 135 O
+đó temp_00000 136 138 O
+là temp_00000 139 141 O
+hải_trình temp_00000 142 151 O
+lớn temp_00000 152 155 O
+nhất temp_00000 156 160 O
+
+từ temp_00000 161 163 O
+tây temp_00000 164 167 O
+sang temp_00000 168 172 O
+đông temp_00000 173 177 O
+với temp_00000 178 181 O
+50.000 temp_00000 182 188 O
+lượt temp_00000 189 193 O
+tàu_bè temp_00000 194 200 O
+
+qua_lại temp_00000 201 208 O
+
+mỗi temp_00000 209 212 O
+năm temp_00000 213 216 O
+... temp_00000 217 220 O
 
