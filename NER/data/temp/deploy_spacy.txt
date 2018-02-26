@@ -1,6 +1,7 @@
-my temp_00000 0 2 O
-name temp_00000 3 7 O
-Is temp_00000 8 10 O
-Ngoc temp_00000 11 15 O
-Linh temp_00000 16 20 O
+her temp_00000 0 3 O
+name temp_00000 4 8 O
+is temp_00000 9 11 O
+Pham temp_00000 12 16 O
+Ngoc temp_00000 17 21 O
+Linh temp_00000 22 26 O
 
